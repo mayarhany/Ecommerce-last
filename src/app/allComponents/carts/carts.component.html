@@ -1,0 +1,30 @@
+<section *ngIf="cartDetailes; else name" class="my-5 p-3 bg-main-light shadow rounded-3 w-75 mx-auto">
+    <h2 class="text-center fw-light">Shop Cart</h2>
+    <button (click)="clearCart()" class="btn btn-outline-danger delete-btn d-block ms-md-auto mx-auto mx-md-0 my-3">
+      <i class="fa-solid fa-trash"></i>
+      Clear Cart
+    </button>
+    <p>Total Price :<span class="text-main">{{ cartDetailes?.totalCartPrice }}</span></p>
+    <div class="row border-bottom border-2 py-3" *ngFor="let item of cartDetailes.products">
+      <div class="col-md-1">
+          <img class="w-100" [src]="item?.product.imageCover" [alt]="item.product.title"/>
+      </div>
+      <div class="col-md-11 d-flex justify-content-between align-items-center">
+          <div>
+              <p class="mb-1 mt-sm-2 mt-md-0">{{ item.product.title | seeMore : 4}}</p>
+              <p class=" mb-1">Price: {{ item.price }}</p>
+              <span (click)="deleteProduct(item.product._id)" class="text-danger cursor-pointer"><i class="fa-solid fa-trash"></i> Remove</span>
+          </div>
+          <div>
+              <button (click)="changeCount(item.product._id, item.count + 1, plus, minus)" #plus class="btn border-success me-2">+</button>
+              <span>{{item.count}}</span>
+              <button (click)="changeCount(item.product._id, item.count - 1, plus, minus)" #minus class="btn border-success ms-2">-</button>
+          </div>
+      </div>
+    </div>
+    <button [routerLink]="['/payment', cartDetailes._id]" class="main-btn mt-4">Online Payment</button>
+  </section>
+  
+  <ng-template #name >
+      <h2 class="text-center fw-light my-3">Your Cart Is Empty</h2>
+  </ng-template>

@@ -1,0 +1,35 @@
+<section *ngIf="productDetailes" class="my-5">
+    <div class="row align-items-center">
+        <div class="col-md-3">
+            <owl-carousel-o [options]="prodictImgsOptions">
+
+                <ng-container *ngFor="let img of productDetailes.images">
+                  <ng-template carouselSlide>
+                    <img class="w-100" [src]="img"/>
+                  </ng-template>
+                </ng-container>
+            
+              </owl-carousel-o>
+        </div>
+        <div class="col-md">
+            <header>
+                <h2 class="fw-light">{{productDetailes.title | seeMore : 7}}</h2>
+                <p class="mb-1 text-muted">{{productDetailes?.description | seeMore : 10}}</p>
+                <span class="text-main fs-sm">{{productDetailes?.category?.name}}</span>
+                <div class="fs-sm d-flex align-items-center justify-content-between">
+                    <span>{{productDetailes.price | currency : ' EGP'}}</span>
+                    <span>
+                        <i class="fa fa-star fs-sm rating-text"></i>
+                        <i class="fa fa-star fs-sm rating-text"></i>
+                        <i class="fa fa-star fs-sm rating-text"></i>
+                        <i class="fa fa-star fs-sm rating-text"></i>
+                        <span class="text-muted">{{productDetailes.ratingsAverage}}</span>
+                    </span>
+                </div>
+            </header>
+            <footer>
+                <button (click)="addProductToCart(productDetailes?._id, add)" #add class="main-btn add-btn w-100 my-2">+ Add To Cart</button>
+            </footer>
+        </div>
+    </div>
+</section>

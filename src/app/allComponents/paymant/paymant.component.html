@@ -1,0 +1,14 @@
+<section class="bg-main-light my-4 p-4 rounded-3 shadow w-75 mx-auto">
+    <h2 class="fw-light mb-3">CheckOut Session</h2>
+    <form [formGroup]="shippingAddressForm" (ngSubmit)="handelPayment()">
+        <label for="detailes" class="mb-1">detailes:</label>
+        <input type="text" class="form-control" formControlName="details"/>
+        <label for="phone" class="mb-1">phone:</label>
+        <input type="tel" class="form-control" formControlName="phone"/>
+        <label for="address" class="mb-1">address:</label>
+        <input type="text" class="form-control" formControlName="city"/>
+        <button class="main-btn mt-3">Check Out</button>
+
+        <p *ngIf="statusMsg === 'fail'" class="alert alert-danger p-1 mt-2">There is no cart for this user</p>
+    </form>
+</section>

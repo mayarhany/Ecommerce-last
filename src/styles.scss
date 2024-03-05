@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+// ~ font
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// ^ owl cursol
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+// & toastr
+@import 'ngx-toastr/toastr';
+
+$main-color: #0aad0a;
+$rating-color: #ffc908;
+$light-color: #f0f3f2;
+$main-font: "Encode Sans Expanded", sans-serif;
+$shadow: rgba(145, 178, 171, 0.2) 0px 2px 4px -1px,
+rgba(145, 178, 171, 0.14) 0px 4px 5px 0px,
+rgba(145, 178, 171, 0.12) 0px 1px 10px 0px;
+$main-transition:0.8s;
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: $light-color;
+}
+::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(rgba(10, 173, 10, 0),rgb(10, 173, 10),rgba(10, 173, 10, 0));
+    // background-color: $main-color;
+}
+
+body{
+    font-family: $main-font;
+    font-weight: 300;
+}
+.active-link{
+    background-color: $main-color !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.text-main{
+    color: $main-color;
+}
+.text-gray{
+    color: #a0a7a4;
+}
+.bg-main{
+    background-color: $main-color;
+}
+.rating-text{
+    color: $rating-color;
+}
+.bg-main-light{
+    background-color: $light-color;
+}
+.fs-sm{
+    font-size: 12px;
+}
+.main-btn{
+    background-color: $main-color;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:disabled{
+        background-color: #0aad0a6e;
+        color: #ffffff8b;
+        cursor: not-allowed;
+    }
+}
+.product{
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative;
+    transition: border $main-transition, box-shadow $main-transition;
+    .heart-icon{
+        position: absolute;
+        right: 40px;
+        top: 75px;
+        opacity: 0;
+        transition: top $main-transition, opacity $main-transition;
+        z-index: 99;
+    }
+    .add-btn{
+        transform: translateY(100%);
+        opacity: 0;
+        transition: transform $main-transition, opacity $main-transition;
+    }
+    &:hover{
+        border: 1px solid $main-color;
+        box-shadow: $shadow;
+        .heart-icon{
+            top: 60px;
+            opacity: 1;
+        }
+        .add-btn{
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}

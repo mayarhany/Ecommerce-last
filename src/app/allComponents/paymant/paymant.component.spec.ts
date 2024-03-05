@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PaymantComponent } from './paymant.component';
+
+describe('PaymantComponent', () => {
+  let component: PaymantComponent;
+  let fixture: ComponentFixture<PaymantComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [PaymantComponent]
+    });
+    fixture = TestBed.createComponent(PaymantComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

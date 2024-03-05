@@ -1,0 +1,74 @@
+<section class="bg-main-light my-4 p-4 rounded-3 shadow w-75 mx-auto">
+    <form [formGroup]="forgetPassForm" (ngSubmit)="forgetPass()" *ngIf="form1">
+        <div class="form-item">
+            <label for="email" class="mb-1">email:</label>
+            <input type="email" name="email" id="email" formControlName="email" class="form-control" placeholder="email..."/>
+
+            <div *ngIf="forgetPassForm.get('email')?.errors && forgetPassForm.get('email')?.touched"
+            class="alert alert-danger mt-1 p-1">
+            <p *ngIf="forgetPassForm.get('email')?.getError('required')" class="mb-0">
+              email is required
+            </p>
+            <p *ngIf="forgetPassForm.get('email')?.getError('email')" class="mb-0">
+              invalid email
+            </p>
+            </div>
+        </div>
+        <button class="main-btn w-100 mt-3">Forget Password</button>
+    </form>
+
+    <form [formGroup]="resetPassForm" (ngSubmit)="verifyCode()" *ngIf="form2">
+        <div class="form-item">
+            <label for="resetPass" class="mb-1">Reset Code:</label>
+            <input type="password" name="resetPass" id="resetPass" formControlName="resetCode" class="form-control" placeholder="Your Reset Code..."/>
+
+            <div *ngIf="resetPassForm.get('resetCode')?.errors && resetPassForm.get('resetCode')?.touched"
+            class="alert alert-danger mt-1 p-1">
+            <p *ngIf="resetPassForm.get('resetCode')?.getError('required')" class="mb-0">
+              Reset Code is required
+            </p>
+            </div>
+        </div>
+        <button class="main-btn w-100 mt-3">Reset Code</button>
+    </form>
+    
+    <form [formGroup]="newPassForm" (ngSubmit)="resetDone()" *ngIf="form3">
+        <div class="form-item">
+            <label for="newPass" class="mb-1">Reset Password:</label>
+            <input type="password" name="newPass" id="newPass" formControlName="newPassword" class="form-control" placeholder="Your New Password..."/>
+            
+            <div *ngIf="newPassForm.get('newPassword')?.errors && newPassForm.get('newPassword')?.touched"
+            class="alert alert-danger mt-1 p-1">
+                <p *ngIf="newPassForm.get('newPassword')?.getError('required')" class="mb-0">
+                    newPassword is required
+                </p>
+                <p *ngIf="newPassForm.get('newPassword')?.getError('pattern')" class="mb-0">
+                    must be at least 6 characters and start with capital letter
+                </p>
+            </div>
+        </div>
+
+        <button class="main-btn w-100 mt-3">Reset Password</button>
+    </form>
+
+    <p *ngIf="messege" class="alert alert-info p-1 my-3">{{messege}}</p>
+</section>
+
+<!-- <section class="bg-main-light my-4 p-4 rounded-3 shadow w-75 mx-auto" *ngIf="statusMsg === 'success'">
+    <form [formGroup]="resetPassForm" (ngSubmit)="verifyCode()" >
+        <label for="resetPass" class="mb-1">Reset Code:</label>
+        <input type="password" name="resetPass" id="resetPass" formControlName="resetCode" class="form-control" placeholder="Your Reset Code..."/>
+        <button class="main-btn w-100 mt-3">Reset Code</button>
+    </form>
+</section>
+
+<section class="bg-main-light my-4 p-4 rounded-3 shadow w-75 mx-auto" *ngIf="statusMsg === 'Success'">
+    <form [formGroup]="newPassForm" (ngSubmit)="resetDone()" >
+        <label for="email" class="mb-1">Email:</label>
+        <input type="email" name="email" id="resetPass" formControlName="email" class="form-control" placeholder="Email..."/>
+        <label for="newPass" class="mb-1">Reset Password:</label>
+        <input type="password" name="newPass" id="newPass" formControlName="newPassword" class="form-control" placeholder="Your New Password..."/>
+        <button class="main-btn w-100 mt-3">Reset Password</button>
+    </form>
+    
+</section> -->
